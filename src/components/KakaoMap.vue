@@ -7,6 +7,14 @@ export default defineComponent({
   data() {
     return {
       schools: [],
+      test: [
+        {
+          schoolnm: '포항제철중학교', latitude: "36.02230834", longitude: "129.32702642"
+        },
+        {
+          schoolnm: '중앙기독중학교', latitude: "37.275334766", longitude: "127.05769035"
+        },
+      ],
     }
   },
   async mounted() {
@@ -37,24 +45,28 @@ export default defineComponent({
       const mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(37.564343, 126.947613), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
+          level: 2, // 지도의 확대 레벨
         };
 
       const map = new kakao.maps.Map(mapContainer, mapOption);
 
       const marks = JSON.parse(JSON.stringify(this.schools))
-      let jsons = [{}];
+      console.log(marks)
+      let jsons = [];
 
       for (let i = 0; i < marks.length; i++) {
         jsons.push({ schoolnm: marks[i].schoolnm, latlng: new kakao.maps.LatLng( Number(marks[i].latitude), Number(marks[i].longitude) )})
+
+        // jsons.push({ schoolnm: this.test[i].schoolnm, latlng: new kakao.maps.LatLng( Number(this.test[i].latitude), Number(this.test[i].longitude) )})
+
         // this.displayMarker([[Number(marks[i].latitude), Number(marks[i].longitude)]]);
 
       }
-      console.log(jsons)
+      // console.log(jsons)
 
       let imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"
 
-      for (let j = 1; j < jsons.length; j++) {
+      for (let j = 0; j < jsons.length; j++) {
         let imageSize = new kakao.maps.Size(24, 35)
         let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize)
         

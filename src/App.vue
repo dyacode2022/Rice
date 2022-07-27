@@ -8,8 +8,8 @@ import KakaoMap from './components/KakaoMap.vue';
 
 <template>
   <Nav />
-  <!-- <Rice /> -->
-  <KakaoMap />
+  <Rice />
+  <!-- <KakaoMap /> -->
 </template>
 
 <style>
