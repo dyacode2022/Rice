@@ -17,7 +17,14 @@
       return {
         school_name: '',
         school_rice: [],
-        school_info: {},
+        school_info: {
+          name: '',
+          eng: '',
+          gender: '',
+          location: '',
+          website: '',
+          lib: '',
+        },
         time: year + '-' + month + '-' + day,
       }
     },
@@ -82,9 +89,10 @@
 
         // this.school_rice = _res_
 
-        const info = (await axios.get(`/info/${this.school_name}`)).data[0];
-        this.school_info = info;
-        console.log(this.school_info);
+        const info = (await axios.get(`/info/${this.school_name}`));
+        console.log(info.data)
+        this.school_info.name = info.data.SCHUL_NM
+        this.school_info.eng = info.data.ENG_SCHUL_NM
       }
     }
   })
@@ -100,8 +108,9 @@
   </div>
 
   <!-- School Info -->
-  <div class="rounded-2xl shadow-slate-800 bg-[#23232B] w-100 mt-20 ml-40 text-zinc-300">
-
+  <div class="rounded-2xl shadow-slate-800 bg-[#23232B] w-100 mt-20 lg:ml-40 lg:mr-40 text-zinc-300">
+    <div class="name text-white font-bold text-2xl pt-10 pl-10 pr-10 text-3xl">{{ school_info.name }}</div>
+    <div class="name text-zinc-500 font-semibold text-2xl text-2xl">{{ school_info.eng }}</div>
   </div>
 
   <!-- Rice Card -->
