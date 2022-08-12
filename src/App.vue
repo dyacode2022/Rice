@@ -3,13 +3,13 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Rice from './components/Rice.vue'
 import Nav from './components/nav.vue'
-import KakaoMap from './components/KakaoMap.vue';
+import Search from './pages/Search.vue'
 </script>
 
 <template>
   <Nav />
+  <!-- <Search /> -->
   <Rice />
-  <!-- <KakaoMap /> -->
 </template>
 
 <style>

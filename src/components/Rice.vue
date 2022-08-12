@@ -24,6 +24,9 @@
           location: '',
           website: '',
           lib: '',
+          tel: '',
+          no: '',
+          ymd: '',
         },
         time: year + '-' + month + '-' + day,
       }
@@ -93,6 +96,13 @@
         console.log(info.data)
         this.school_info.name = info.data.SCHUL_NM
         this.school_info.eng = info.data.ENG_SCHUL_NM
+        this.school_info.gender = info.data.COEDU_SC_NM
+        this.school_info.location = info.data.ORG_RDNMA
+        this.school_info.website = info.data.HMPG_ADRES
+        this.school_info.lib = info.data.FOND_SC_NM
+        this.school_info.tel = info.data.ORG_TELNO
+        this.school_info.no = info.data.ORG_RDNZC
+        this.school_info.ymd = info.data.FOND_YMD
       }
     }
   })
@@ -109,8 +119,19 @@
 
   <!-- School Info -->
   <div class="rounded-2xl shadow-slate-800 bg-[#23232B] w-100 mt-20 lg:ml-40 lg:mr-40 text-zinc-300">
-    <div class="name text-white font-bold text-2xl pt-10 pl-10 pr-10 text-3xl">{{ school_info.name }}</div>
-    <div class="name text-zinc-500 font-semibold text-2xl text-2xl">{{ school_info.eng }}</div>
+
+    <div class="name text-white font-bold text-2xl pt-10 pl-10 pr-10 text-3xl"><a class="underline" href="https://namu.wiki/w/{{ school_info.name }}">{{ school_info.name }}</a></div>
+    <div class="name text-zinc-500 font-semibold text-2xl pb-10">{{ school_info.eng }}</div>
+
+    <div class="align-left">
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">주소: </span>{{ school_info.location }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">성별: </span>{{ school_info.gender }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">설립구분: </span>{{ school_info.lib }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">설립일: </span>{{ school_info.ymd }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">우편번호: </span>{{ school_info.no }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">대표번호: </span>{{ school_info.tel }}</div>
+      <div class="name text-zinc-100 font-semibold text-2xl"><span class="text-zinc-400">웹사이트: </span><a class="text-blue-300 underline" href="{{ school_info.website }}">바로가기</a></div>
+    </div>
   </div>
 
   <!-- Rice Card -->
