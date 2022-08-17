@@ -9,9 +9,11 @@ import Search from './pages/Search.vue'
 <template>
   <Nav />
   <!-- <Search /> -->
-  <Rice />
-</template>
 
+  <!-- <RouterLink to="/info/포항제철중학교">info</RouterLink> -->
+
+  <RouterView />
+</template>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -20,6 +22,6 @@ import Search from './pages/Search.vue'
   text-align: center;
   /* color: #2c3e50; */
   /* padding: 40px; */
-  /* background: #e3e3e3; */
+  /* background: #e0e0e0; */
 }
 </style>
