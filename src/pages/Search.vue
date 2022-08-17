@@ -47,8 +47,8 @@ export default defineComponent({
 
 #entry {
   background: #e0e0e0;
-  box-shadow:  10px 10px 20px #bebebe,
-              -10px -10px 20px #ffffff;
+  box-shadow:  9px 9px 18px #bebebe,
+              -9px -9px 18px #ffffff;
 }
 
 #under {

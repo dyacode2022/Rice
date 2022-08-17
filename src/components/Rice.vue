@@ -16,7 +16,6 @@
     data() {
       return {
         school_name: '',
-        _school_name: '',
         school_rice: [],
         school_info: {
           name: '',
@@ -30,10 +29,10 @@
           ymd: '',
         },
         time: year + '-' + month + '-' + day,
+        exmeal: ['밥', '반찬1', '반찬2', '반찬3', '반찬4', '국', '디저트'],
       }
     },
     async mounted() {
-      console.log(  )
       this.school_name = window.sessionStorage.getItem('search')
       console.log(`session ${this.school_name}`)
 
@@ -109,6 +108,7 @@
         // console.log(_res_)
 
         // this.school_rice = _res_
+         window.sessionStorage.setItem('search', this.school_name)
 
         const info = (await axios.get(`/info/${this.school_name}`));
         console.log(info.data)
@@ -131,15 +131,18 @@
 
   <!-- Search bar -->
   <div class="search">
-    <input v-model="school_name" id="entry" type="text" class="bg-[#e0e0e0] text-slate-600 text-lg rounded-2xl shadow-xl w-1/4 h-14 p-3 mt-10" placeholder="학교명" outline="none"/>
+    <input v-model="school_name" id="under" type="text" class="bg-[#e0e0e0] text-slate-600 text-lg rounded-2xl shadow-xl w-1/4 h-14 p-3 mt-20" placeholder="학교명" outline="none"/>
     <button v-on:click="getSchool()" id="entry" class="bg-zinc-200 ml-6 text-zinc-400 hover:text-zinc-500 text-xl rounded-2xl shadow-xl h-14 w-24">Search</button>
     <!-- <RouterLink class="bg-zinc-200 ml-6 text-zinc-400 hover:text-zinc-500 text-xl rounded-2xl shadow-xl p-5" id="entry" to="/info/포항제철중학교">Search</RouterLink> -->
   </div>
 
   <!-- School Info -->
-  <div id="entry" class="rounded-2xl shadow-slate-800 bg-[#e0e0e0] w-100 mt-20 lg:ml-40 lg:mr-40 text-zinc-300">
 
-    <div class="name text-zinc-700 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl"><a class="underline" href="https://namu.wiki/w/{{ school_info.name }}">{{ school_info.name }}</a></div>
+  <div class="mt-20 font-mono text-zinc-400 hover:text-zinc-500 text-2xl">About School</div>
+
+  <div id="under" class="rounded-3xl shadow-slate-800 bg-[#e0e0e0] w-100 lg:ml-40 lg:mr-40 text-zinc-300 mt-3">
+
+    <div class="name text-zinc-600 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl"><a class="underline" href="https://namu.wiki/w/{{ school_info.name }}">{{ school_info.name }}</a></div>
     <div class="name text-zinc-500 font-semibold text-2xl pb-10">{{ school_info.eng }}</div>
 
     <div class="align-left pb-10">
@@ -154,25 +157,30 @@
   </div>
 
   <!-- Rice Card -->
-  <div class="rounded-2xl shadow-slate-800 bg-[#e0e0e0] w-80 mt-20 ml-40 text-zinc-300">
-    <div class="time font-bold text-xl p-5">{{ time }}</div>
-    <RiceCard v-for="item in school_rice.length" :rice="school_rice[item-1]" />
+
+  <div class="mt-20 font-mono text-zinc-400 hover:text-zinc-500 text-2xl">About Meal</div>
+
+  <div id="under" class="rounded-2xl shadow-slate-800 bg-[#e0e0e0] mt-3 m-40 text-zinc-300">
+    <div class="time name text-zinc-600 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl">{{ time }}</div>
+    <div class="flex align-center">
+      <RiceCard class="pb-10" v-for="item in exmeal.length" :rice="exmeal[item-1]" />
+    </div>
   </div>
+
 </template>
 
 <style scoped>
 
 #entry {
   background: #e0e0e0;
-  box-shadow:  20px 20px 60px #bebebe,
-              -20px -20px 60px #ffffff;
+  box-shadow:  9px 9px 18px #bebebe,
+              -9px -9px 18px #ffffff;
 }
 
 #under {
-  border-radius: 50px;
-  background: #e0e0e0;
-  box-shadow: inset 20px 20px 60px #bebebe,
-              inset -20px -20px 60px #ffffff;
+background: #e0e0e0;
+box-shadow: inset 5px 5px 10px #bebebe,
+            inset -5px -5px 10px #ffffff;
 }
 
 </style>
