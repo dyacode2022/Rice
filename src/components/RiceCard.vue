@@ -11,7 +11,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="rice-card text-center text-current font-semibold p-3 m-10 text-zinc-700">{{ rice }}</div>
+  <div class="rice-card text-center font-semibold text-2xl m-10 text-gray-700">{{ rice }}</div>
 </template>
 
 <style scoped>
