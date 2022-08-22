@@ -29,7 +29,6 @@
           ymd: '',
         },
         time: year + '-' + month + '-' + day,
-        exmeal: ['밥', '반찬1', '반찬2', '반찬3', '반찬4', '국', '디저트'],
       }
     },
     async mounted() {
@@ -50,130 +49,30 @@
 
       const _res = (await axios.get(`/rice/${this.school_name}`)).data
         
-        if (_res !== '') {
-          console.log(_res)
-          let _res_ = _res.DDISH_NM.split('<br/>')
-          for (let i = 0; i < _res_.length; i++) {
-            _res_[i] = _res_[i].replace('^', '');
-            _res_[i] = _res_[i].replace('^', '');
-            _res_[i] = _res_[i].replace('*', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('<br/>', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-          } 
-        } else {
-          this.school_rice[0] = '급식 정보 없음'
-        }
+      if (_res == 'no') {
+        this.school_rice[0] = '급식 정보 없음'
+      } else {
+        this.school_rice = _res.DDISH_NM.split('<br/>')
+        console.log('***********************\n' + this.school_rice + '\n************************')          
+      }
+
     },
     methods: {
       async getSchool () {
         console.log(`Getting ${this.school_name}'s value`)
+        window.sessionStorage.setItem('search', this.school_name)
 
         const _res = (await axios.get(`/rice/${this.school_name}`)).data
         
-        if (_res !== '') {
-          console.log(_res)
-          let _res_ = _res.DDISH_NM.split('<br/>')
-          for (let i = 0; i < _res_.length; i++) {
-            _res_[i] = _res_[i].replace('^', '');
-            _res_[i] = _res_[i].replace('^', '');
-            _res_[i] = _res_[i].replace('*', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('(', '');
-            _res_[i] = _res_[i].replace(')', '');
-            _res_[i] = _res_[i].replace('<br/>', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('1', '');
-            _res_[i] = _res_[i].replace('2', '');
-            _res_[i] = _res_[i].replace('3', '');
-            _res_[i] = _res_[i].replace('4', '');
-            _res_[i] = _res_[i].replace('5', '');
-            _res_[i] = _res_[i].replace('6', '');
-            _res_[i] = _res_[i].replace('7', '');
-            _res_[i] = _res_[i].replace('8', '');
-            _res_[i] = _res_[i].replace('9', '');
-            _res_[i] = _res_[i].replace('0', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-            _res_[i] = _res_[i].replace('.', '');
-          } 
-        } else {
+        if (_res == 'no') {
           this.school_rice[0] = '급식 정보 없음'
+        } else {
+          this.school_rice = _res.DDISH_NM.split('<br/>')
+          console.log('***********************\n' + this.school_rice + '\n************************')          
         }
 
-        console.log(this.school_rice)
-
-        window.sessionStorage.setItem('search', this.school_name)
 
         const info = (await axios.get(`/info/${this.school_name}`));
-        console.log(info.data)
         this.school_info.name = info.data.SCHUL_NM
         this.school_info.eng = info.data.ENG_SCHUL_NM
         this.school_info.gender = info.data.COEDU_SC_NM
@@ -186,7 +85,7 @@
       },
 
       goWebsite () {
-        window.open(`https://${this.school_info.website}`, "_blank");   
+        window.open(`${this.school_info.website}`, "_blank");   
       },
 
       goWiki () {
@@ -212,7 +111,7 @@
 
   <div id="under" class="md:rounded-3xl shadow-slate-800 bg-[#e0e0e0] w-100 lg:ml-40 lg:mr-40 text-zinc-300 mt-3">
 
-    <div class="name text-zinc-600 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl"><a class="underline cursor-pointer" @click="goWiki">{{ school_info.name }}</a></div>
+    <div class="name text-zinc-600 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl"><a class="underline cursor-pointer hover:text-blue-400" @click="goWiki">{{ school_info.name }}</a></div>
     <div class="name text-zinc-500 font-semibold text-2xl pb-10">{{ school_info.eng }}</div>
 
     <div class="align-left pb-10">
@@ -230,12 +129,13 @@
 
   <div class="mt-20 font-mono text-zinc-400 hover:text-zinc-500 text-2xl">About Meal</div>
 
-  <div id="under" class="md:rounded-2xl shadow-slate-800 bg-[#e0e0e0] mt-3 md:ml-40 md:mr-40 text-zinc-300 mb-72">
+  <div id="under" class="md:rounded-2xl shadow-slate-800 bg-[#e0e0e0] mt-3 md:ml-40 md:mr-40 text-zinc-300 mb-2">
     <div class="time name text-zinc-600 font-bold text-3xl pt-10 pl-10 pr-10 text-3xl">{{ time }}</div>
     <div class="flex align-center justify-center flex-wrap">
       <RiceCard class="pb-10" v-for="item in school_rice.length" :rice="school_rice[item-1]" />
     </div>
   </div>
+  <div class="allergy text-zinc-500 text-xl mb-72">1.난류 2.우유 3.메밀 4.땅콩 5.대두 6.밀 7.고등어 8.게 9.새우 10.돼지고기 11.복숭아 12.토마토 13.아황산염 14.호두 15.닭고기 16.쇠고기 17.오징어 18.조개류 19.잣</div>
 
 </template>
 
