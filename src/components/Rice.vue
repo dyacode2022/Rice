@@ -47,8 +47,21 @@
       this.school_info.no = info.data.ORG_RDNZC
       this.school_info.ymd = info.data.FOND_YMD
 
-      const _res = (await axios.get(`/rice/${this.school_name}`)).data
-        
+      this.school_rice = [];
+
+      console.log(`Getting ${this.school_name}'s value`)
+      window.sessionStorage.setItem('search', this.school_name)
+
+      let _res = []
+
+      if (this.school_name == "포항제철중학교") {
+        _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
+      } else if (this.school_name == "중앙기독중학교") {
+        _res = (await axios.get(`/rice/중앙기독초등학교`)).data
+      } else {
+        _res = (await axios.get(`/rice/${this.school_name}`)).data
+      }
+
       if (_res == 'no') {
         this.school_rice[0] = '급식 정보 없음'
       } else {
@@ -59,10 +72,21 @@
     },
     methods: {
       async getSchool () {
+
+        this.school_rice = [];
+
         console.log(`Getting ${this.school_name}'s value`)
         window.sessionStorage.setItem('search', this.school_name)
 
-        const _res = (await axios.get(`/rice/${this.school_name}`)).data
+        let _res = []
+
+        if (this.school_name == "포항제철중학교") {
+          _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
+        } else if (this.school_name == "중앙기독중학교") {
+          _res = (await axios.get(`/rice/중앙기독초등학교`)).data
+        } else {
+          _res = (await axios.get(`/rice/${this.school_name}`)).data
+        }
         
         if (_res == 'no') {
           this.school_rice[0] = '급식 정보 없음'
