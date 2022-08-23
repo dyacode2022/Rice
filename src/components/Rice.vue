@@ -102,7 +102,7 @@
         this.school_info.gender = info.data.COEDU_SC_NM
         this.school_info.location = info.data.ORG_RDNMA
         this.school_info.website = info.data.HMPG_ADRES
-        this.school_info.lib = info.data.FOND_SC_NM
+        this.school_info.lib = info.data.FOND_SC_NM``
         this.school_info.tel = info.data.ORG_TELNO
         this.school_info.no = info.data.ORG_RDNZC
         this.school_info.ymd = info.data.FOND_YMD

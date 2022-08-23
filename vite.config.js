@@ -7,17 +7,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/rice': {
-        target: 'http://localhost:3001/',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/shloc': {
-        target: 'http://localhost:3001/',
+        target: 'https://rice-backend.herokuapp.com/',
         changeOrigin: true,
         secure: false,
       },
       '/info': {
-        target: 'http://localhost:3001/',
+        target: 'https://rice-backend.herokuapp.com/',
         changeOrigin: true,
         secure: false,
       },
