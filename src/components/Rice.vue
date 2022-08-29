@@ -55,11 +55,11 @@
       let _res = []
 
       if (this.school_name == "포항제철중학교") {
-        _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
+        _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/포항제철공업고등학교`)).data
       } else if (this.school_name == "중앙기독중학교") {
-        _res = (await axios.get(`/rice/중앙기독초등학교`)).data
+        _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/중앙기독초등학교`)).data
       } else {
-        _res = (await axios.get(`/rice/${this.school_name}`)).data
+        _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/${this.school_name}`)).data
       }
 
       if (_res == 'no') {
@@ -78,14 +78,14 @@
         console.log(`Getting ${this.school_name}'s value`)
         window.sessionStorage.setItem('search', this.school_name)
 
-        let _res = []
+        let _res = [];
 
         if (this.school_name == "포항제철중학교") {
-          _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
+          _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/포항제철공업고등학교`)).data
         } else if (this.school_name == "중앙기독중학교") {
-          _res = (await axios.get(`/rice/중앙기독초등학교`)).data
+          _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/중앙기독초등학교`)).data
         } else {
-          _res = (await axios.get(`/rice/${this.school_name}`)).data
+          _res = (await axios.get(`http://rice-backend.herokuapp.com/rice/${this.school_name}`)).data
         }
         
         if (_res == 'no') {
@@ -96,7 +96,7 @@
         }
 
 
-        const info = (await axios.get(`/info/${this.school_name}`));
+        const info = (await axios.get(`http://rice-backend.herokuapp.com/info/${this.school_name}`));
         this.school_info.name = info.data.SCHUL_NM
         this.school_info.eng = info.data.ENG_SCHUL_NM
         this.school_info.gender = info.data.COEDU_SC_NM
