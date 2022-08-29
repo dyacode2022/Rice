@@ -55,11 +55,11 @@
       let _res = []
 
       if (this.school_name == "포항제철중학교") {
-        _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/포항제철공업고등학교`)).data
+        _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
       } else if (this.school_name == "중앙기독중학교") {
-        _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/중앙기독초등학교`)).data
+        _res = (await axios.get(`/rice/중앙기독초등학교`)).data
       } else {
-        _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/${this.school_name}`)).data
+        _res = (await axios.get(`/rice/${this.school_name}`)).data
       }
 
       if (_res == 'no') {
@@ -81,11 +81,11 @@
         let _res = [];
 
         if (this.school_name == "포항제철중학교") {
-          _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/포항제철공업고등학교`)).data
+          _res = (await axios.get(`/rice/포항제철공업고등학교`)).data
         } else if (this.school_name == "중앙기독중학교") {
-          _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/중앙기독초등학교`)).data
+          _res = (await axios.get(`/rice/중앙기독초등학교`)).data
         } else {
-          _res = (await axios.get(`https://rice-backend.herokuapp.com/rice/${this.school_name}`)).data
+          _res = (await axios.get(`/rice/${this.school_name}`)).data
         }
         
         if (_res == 'no') {
@@ -95,14 +95,13 @@
           console.log('***********************\n' + this.school_rice + '\n************************')          
         }
 
-
-        const info = (await axios.get(`https://rice-backend.herokuapp.com/info/${this.school_name}`));
+        const info = (await axios.get(`/info/${this.school_name}`));
         this.school_info.name = info.data.SCHUL_NM
         this.school_info.eng = info.data.ENG_SCHUL_NM
         this.school_info.gender = info.data.COEDU_SC_NM
         this.school_info.location = info.data.ORG_RDNMA
         this.school_info.website = info.data.HMPG_ADRES
-        this.school_info.lib = info.data.FOND_SC_NM``
+        this.school_info.lib = info.data.FOND_SC_NM
         this.school_info.tel = info.data.ORG_TELNO
         this.school_info.no = info.data.ORG_RDNZC
         this.school_info.ymd = info.data.FOND_YMD
@@ -174,7 +173,7 @@
 #under {
 background: #e0e0e0;
 box-shadow: inset 5px 5px 10px #bebebe,
-            inset -5px -5px 10px #ffffff;
+            inset -5px -5px 10px z#ffffff;
 }
 
 </style>
