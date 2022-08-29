@@ -7,12 +7,12 @@ export default defineConfig({
   server: {
     proxy: {
       '/rice': {
-        target: 'https://rice-backend.herokuapp.com',
+        target: 'http://rice-backend.herokuapp.com',
         changeOrigin: true,
         secure: false,
       },
       '/info': {
-        target: 'https://rice-backend.herokuapp.com',
+        target: 'http://rice-backend.herokuapp.com',
         changeOrigin: true,
         secure: false,
       },
