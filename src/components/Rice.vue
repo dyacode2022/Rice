@@ -36,7 +36,7 @@
       console.log(`session ${this.school_name}`)
 
       
-      const info = (await axios.get(`https://rice-one.vercel.app/api/cors?url=https://rice-backend.herokuapp.com/info/${this.school_name}`));
+      const info = (await axios.get(`https://rice-backend.herokuapp.com/info/${this.school_name}`));
       this.school_info.name = info.data.SCHUL_NM
       this.school_info.eng = info.data.ENG_SCHUL_NM
       this.school_info.gender = info.data.COEDU_SC_NM
