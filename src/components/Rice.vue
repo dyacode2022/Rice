@@ -85,7 +85,7 @@
         } else if (this.school_name == "중앙기독중학교") {
           _res = (await axios.get(`http://localhost:3001/meal/중앙기독초등학교`)).data
         } else {
-          _res = (await axios.get(`/meal/${this.school_name}`)).data
+          _res = (await axios.get(`http://localhost:3001/meal/${this.school_name}`)).data
         }
         
         if (_res == 'no') {
